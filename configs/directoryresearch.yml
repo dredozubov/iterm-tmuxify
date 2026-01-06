@@ -1,0 +1,11 @@
+# ~/.config/iterm-tmuxify/directoryresearch.yml
+name: directoryresearch
+root: ~/workspace/directoryresearch/directoryresearch.com
+
+windows:
+  - name: dev
+    layout: main-vertical
+    panes:
+      - claude
+      -   # empty terminal
+      -   # empty terminal

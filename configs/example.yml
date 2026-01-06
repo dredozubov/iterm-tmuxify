@@ -1,0 +1,22 @@
+# Example iterm-tmuxify configuration
+# Copy this to ~/.config/iterm-tmuxify/<project-name>.yml
+
+name: example
+root: ~/workspace/example
+
+windows:
+  - name: dev
+    layout: main-vertical  # Large pane on left, others stacked on right
+    panes:
+      - claude            # First pane runs 'claude'
+      -                   # Empty terminal
+      -                   # Empty terminal
+
+  - name: docker
+    command: docker compose up
+
+  - name: logs
+    layout: even-vertical
+    panes:
+      - docker compose logs -f api
+      - docker compose logs -f worker

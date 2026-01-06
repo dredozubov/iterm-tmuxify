@@ -131,12 +131,13 @@ def attach_session(name: str, control_mode: bool = True) -> None:
     """
     if control_mode:
         # Create a new tab that runs tmux -CC directly
-        # The command parameter runs it as the tab's initial command
-        # exec $SHELL keeps the tab alive after detaching
+        # After tmux exits, check if session still exists:
+        # - If yes (user detached): keep tab open with shell
+        # - If no (user closed windows): exit cleanly
         applescript = f'''
             tell application "iTerm"
                 tell current window
-                    create tab with default profile command "/bin/zsh -l -c 'tmux -CC attach-session -t {name}; exec $SHELL'"
+                    create tab with default profile command "/bin/zsh -l -c 'tmux -CC attach-session -t {name}; tmux has-session -t {name} 2>/dev/null && exec $SHELL'"
                 end tell
             end tell
         '''

@@ -63,3 +63,8 @@ Supports tmux built-in layouts:
 - `main-horizontal` - Large pane on top, others below
 - `main-vertical` - Large pane on left, others on right
 - `tiled` - Panes arranged in grid pattern
+
+## Tested On
+
+- macOS Tahoe 26.2
+- iTerm2 3.6.6
